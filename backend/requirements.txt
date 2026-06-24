@@ -1,0 +1,54 @@
+# Web framework
+fastapi==0.111.0
+uvicorn[standard]==0.30.1
+python-multipart==0.0.9
+
+# Async ORM  (asyncpg 0.30+ supports Python 3.13)
+sqlalchemy[asyncio]==2.0.31
+alembic==1.13.2
+asyncpg==0.30.0
+psycopg[binary]>=3.2.3
+
+# Settings & validation
+pydantic==2.8.2
+pydantic-settings==2.3.4
+pydantic[email]==2.8.2
+
+# Auth
+python-jose[cryptography]==3.3.0
+bcrypt==4.2.1
+
+# Task queue
+celery[redis]==5.4.0
+redis==5.0.7
+
+# Local AI — Ollama (prompt enhancement) + diffusers (generation)
+httpx==0.27.0           # Ollama HTTP client
+torch>=2.2.0            # MPS / CUDA / CPU inference
+torchvision
+diffusers>=0.30.0       # Stable Diffusion, SDXL, ModelScope, Zeroscope
+transformers>=4.40.0
+accelerate>=0.30.0
+safetensors
+pillow
+imageio
+imageio-ffmpeg          # MP4 export for video
+
+# ONNX image inference (image only — video has no ONNX support)
+optimum[onnxruntime]>=1.20.0   # ORTStableDiffusionXLPipeline
+onnxruntime>=1.18.0            # CoreML EP built-in on macOS arm64
+
+# Storage
+minio==7.2.7            # optional — for cloud re-hosting
+
+# HTTP
+httpx==0.27.0
+
+# Observability
+prometheus-client==0.20.0
+
+# Dev / test
+pytest==8.2.2
+pytest-asyncio==0.23.7
+httpx==0.27.0
+factory-boy==3.3.0

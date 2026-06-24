@@ -1,0 +1,318 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    @apply text-white antialiased;
+    background-color: #04020e;
+    min-height: 100vh;
+  }
+
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(124, 58, 237, 0.5);
+    border-radius: 2px;
+  }
+}
+
+/* ── Orbs ──────────────────────────────────────────────────── */
+.orb {
+  position: absolute;
+  filter: blur(80px);
+  will-change: transform;
+  pointer-events: none;
+}
+
+/* ── Backgrounds ───────────────────────────────────────────── */
+.bg-space {
+  background-color: #04020e;
+  background-image:
+    radial-gradient(ellipse 90% 60% at 15% 5%,  rgba(124, 58, 237, 0.18) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 50% at 85% 90%, rgba(6, 182, 212, 0.12)  0%, transparent 55%),
+    radial-gradient(ellipse 60% 60% at 50% 50%, rgba(236, 72, 153, 0.06) 0%, transparent 70%);
+}
+
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+.dot-grid {
+  background-image: radial-gradient(rgba(255,255,255,0.07) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+/* ── Glass ─────────────────────────────────────────────────── */
+.glass {
+  background: rgba(255,255,255,0.03);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.07);
+}
+.glass-md {
+  background: rgba(255,255,255,0.05);
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* ── Gradient text ─────────────────────────────────────────── */
+.text-gradient {
+  background: linear-gradient(135deg, #c4b5fd 0%, #67e8f9 45%, #f9a8d4 80%);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-pan 6s ease infinite;
+}
+
+.text-gradient-warm {
+  background: linear-gradient(135deg, #fdba74 0%, #f472b6 50%, #a78bfa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-cyan {
+  background: linear-gradient(135deg, #67e8f9 0%, #818cf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Neon glow ─────────────────────────────────────────────── */
+.glow-violet {
+  box-shadow:
+    0 0 15px rgba(124,58,237,0.7),
+    0 0 40px rgba(124,58,237,0.3),
+    0 0 80px rgba(124,58,237,0.1);
+}
+.glow-cyan {
+  box-shadow:
+    0 0 15px rgba(6,182,212,0.7),
+    0 0 40px rgba(6,182,212,0.3),
+    0 0 80px rgba(6,182,212,0.1);
+}
+.glow-pink {
+  box-shadow:
+    0 0 15px rgba(236,72,153,0.7),
+    0 0 40px rgba(236,72,153,0.3),
+    0 0 80px rgba(236,72,153,0.1);
+}
+.glow-orange {
+  box-shadow:
+    0 0 15px rgba(249,115,22,0.7),
+    0 0 40px rgba(249,115,22,0.3),
+    0 0 80px rgba(249,115,22,0.1);
+}
+
+.text-glow-violet { text-shadow: 0 0 30px rgba(167,139,250,0.8), 0 0 80px rgba(124,58,237,0.4); }
+.text-glow-cyan   { text-shadow: 0 0 30px rgba(6,182,212,0.8),   0 0 80px rgba(6,182,212,0.4); }
+
+/* ── Animated gradient border ──────────────────────────────── */
+.border-glow {
+  position: relative;
+}
+.border-glow::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, #7c3aed, #06b6d4, #ec4899, #7c3aed);
+  background-size: 300% 300%;
+  animation: gradient-pan 4s ease infinite;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* ── Neon CTA button ───────────────────────────────────────── */
+.btn-cta {
+  position: relative;
+  background: linear-gradient(135deg, #7c3aed, #4f46e5, #7c3aed);
+  background-size: 200% 200%;
+  animation: gradient-pan 4s ease infinite;
+  border: none;
+  color: white;
+  font-weight: 700;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.3s;
+}
+.btn-cta:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 0 20px rgba(124,58,237,0.8),
+    0 0 60px rgba(124,58,237,0.4),
+    0 20px 40px rgba(124,58,237,0.2);
+}
+.btn-cta::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.btn-cta:hover::after { opacity: 1; }
+
+/* ── Input ─────────────────────────────────────────────────── */
+.input-neon {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.09);
+  color: white;
+  outline: none;
+  transition: all 0.25s;
+}
+.input-neon:focus {
+  border-color: rgba(124,58,237,0.8);
+  background: rgba(124,58,237,0.07);
+  box-shadow: 0 0 0 3px rgba(124,58,237,0.15), inset 0 0 20px rgba(124,58,237,0.05);
+}
+.input-neon::placeholder { color: rgba(255,255,255,0.22); }
+
+/* ── Shimmer skeleton ──────────────────────────────────────── */
+.shimmer {
+  position: relative;
+  overflow: hidden;
+  background: rgba(255,255,255,0.04);
+}
+.shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.07) 50%, transparent 100%);
+  transform: translateX(-100%);
+  animation: shimmer 1.8s ease-in-out infinite;
+}
+
+/* ── Wave bars (loading) ───────────────────────────────────── */
+.wave-bar {
+  width: 3px;
+  border-radius: 2px;
+  background: linear-gradient(to top, #7c3aed, #06b6d4);
+  animation: wave 1s ease-in-out infinite;
+}
+
+/* ── Keyframes ─────────────────────────────────────────────── */
+@keyframes gradient-pan {
+  0%, 100% { background-position: 0% 50%; }
+  50%       { background-position: 100% 50%; }
+}
+
+@keyframes float-a {
+  0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+  33%       { transform: translate(50px, -40px) scale(1.1) rotate(5deg); }
+  66%       { transform: translate(-30px, 25px) scale(0.93) rotate(-3deg); }
+}
+@keyframes float-b {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  40%       { transform: translate(-60px, 40px) scale(0.92); }
+  70%       { transform: translate(35px, -20px) scale(1.07); }
+}
+@keyframes float-c {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%       { transform: translate(30px, 50px) scale(1.06); }
+}
+
+@keyframes shimmer {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse-ring {
+  0%   { transform: scale(1);   opacity: 0.7; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes appear-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+@keyframes wave {
+  0%, 100% { transform: scaleY(0.35); opacity: 0.5; }
+  50%       { transform: scaleY(1);    opacity: 1; }
+}
+
+@keyframes ticker-move {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes scan {
+  0%   { transform: translateY(0);    opacity: 0; }
+  5%   { opacity: 1; }
+  95%  { opacity: 1; }
+  100% { transform: translateY(100%); opacity: 0; }
+}
+
+/* ── Animation classes ─────────────────────────────────────── */
+.animate-float-a   { animation: float-a 12s ease-in-out infinite; }
+.animate-float-b   { animation: float-b 16s ease-in-out infinite; }
+.animate-float-c   { animation: float-c 10s ease-in-out infinite; }
+.animate-spin-slow { animation: spin-slow 30s linear infinite; }
+.animate-blink     { animation: blink 1s step-end infinite; }
+.animate-ticker    { animation: ticker-move 25s linear infinite; }
+
+.animate-appear   { opacity: 0; animation: appear    0.8s cubic-bezier(0.16,1,0.3,1) forwards; }
+.animate-appear-u { opacity: 0; animation: appear-up 0.6s cubic-bezier(0.16,1,0.3,1) forwards; }
+
+.delay-wave-0 { animation-delay: 0s; }
+.delay-wave-1 { animation-delay: 0.15s; }
+.delay-wave-2 { animation-delay: 0.3s; }
+.delay-wave-3 { animation-delay: 0.45s; }
+.delay-wave-4 { animation-delay: 0.6s; }
+
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.4s; }
+.delay-5 { animation-delay: 0.5s; }
+.delay-6 { animation-delay: 0.6s; }
+.delay-7 { animation-delay: 0.7s; }
+.delay-8 { animation-delay: 0.8s; }
+.delay-9 { animation-delay: 0.9s; }
+
+/* ── Pipeline step active ring ─────────────────────────────── */
+@keyframes step-ring {
+  0%, 100% { transform: scale(1);   opacity: 0.5; }
+  50%       { transform: scale(2);   opacity: 0; }
+}
+.animate-step-ring { animation: step-ring 1.4s ease-in-out infinite; }
+
+/* ── Glow pulse for completed media ───────────────────────── */
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 30px rgba(139,92,246,0.3), 0 0 60px rgba(6,182,212,0.1); }
+  50%       { box-shadow: 0 0 60px rgba(139,92,246,0.5), 0 0 100px rgba(6,182,212,0.2); }
+}
+.animate-glow-pulse { animation: glow-pulse 3s ease-in-out infinite; }
+
+/* ── Fade-in-up utility ────────────────────────────────────── */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up { animation: fade-up 0.5s cubic-bezier(0.16,1,0.3,1) both; }
