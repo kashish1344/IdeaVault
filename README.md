@@ -6,7 +6,6 @@
 [![Python](https://img.shields.io/badge/Python-3.11+-blue.svg)](https://python.org)
 [![Next.js](https://img.shields.io/badge/Next.js-14-black.svg)](https://nextjs.org)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.111-green.svg)](https://fastapi.tiangolo.com)
-[![Docker](https://img.shields.io/badge/Docker-Compose-blue.svg)](https://docker.com)
 [![Tests](https://img.shields.io/badge/Tests-pytest-brightgreen.svg)](#testing)
 
 ---
