@@ -48,6 +48,10 @@ IdeaVault turns natural language into **high-quality images and short videos** u
 Everything runs **100% locally**. No external API calls are required for generation.
 
 ---
+## UI Screenshot
+
+<img width="1508" height="825" alt="Screenshot 2026-06-25 at 12 17 58 AM" src="https://github.com/user-attachments/assets/4069ce13-c845-4e0c-b1db-add222140401" />
+
 
 ## Key Features
 
